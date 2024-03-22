@@ -1,0 +1,18 @@
+function countchat(str)
+{
+    let count = {};
+    for(let chat of str)
+    {
+        if(!count[chat])
+        {
+            count[chat] = 1;
+        }
+        else 
+        {
+            count[chat]++;
+        }
+    }
+    return count;
+}
+
+console.log(countchat('aabccadeaac'));
