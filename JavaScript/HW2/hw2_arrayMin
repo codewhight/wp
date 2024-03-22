@@ -1,0 +1,13 @@
+function array_min(a)
+{
+    let min = a[0];
+    for(let i = 1;i < a.length;i++)
+    {
+        if(min > a[i])
+            min = a[i];
+    }
+    return min;
+}
+
+var a = [7, 3, 23, 5, 39, 1];
+console.log("The smaller number of array a is", array_min(a));
