@@ -11,3 +11,6 @@ function mt(e)
     }
     return iWeekday;
 }
+
+var w = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+console.log("e2i ",mt(w));
