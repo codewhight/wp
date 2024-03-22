@@ -1,0 +1,13 @@
+var weekday = {Monday : '1', Tuesday : '2', Wednesday : '3', Thursday : '4', Friday : '5', Saturday : '6', Sunday : '0'};
+
+function mt(e)
+{
+    var iWeekday = [];
+    for(let i in e)
+    {
+        var eword = e[i]
+        var iword = weekday[eword]
+        iWeekday.push(iword)
+    }
+    return iWeekday;
+}
