@@ -1,0 +1,44 @@
+function filter(a, f)
+{
+    let ans = [], j = 0;
+    for(let i = 0;i < a.length;i++)
+    {
+        if(f(a[i]) == 0)
+        {
+            ans[j] = a[i];
+            j++;
+        }
+            
+    }
+    return ans;
+}
+
+function isOdd(x)
+{
+    if(x % 2 == 0)
+    {
+        return 0;
+    }
+}
+
+function isEven(x)
+{
+    if(x % 2 == 1)
+    {
+        return 0;
+    }
+}
+function isPrime(x)
+{
+    for(let i = 2;i < x;i++)
+    {
+        if(x % i ==0)
+            return 1;
+        
+    }
+    return 0;
+}
+var a = [10, 5, 68, 9, 2, 13];
+console.log("All odd numbers in array A:", filter(a, isOdd));
+console.log("All even numbers in array A:", filter(a, isEven));
+console.log("All prime numbers in array A:", filter(a, isPrime));
