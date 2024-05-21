@@ -1,1 +1,85 @@
+<html>
+    <body>        
+        <button id="button" onclick="job1()">變寬</button>
+        <button id="button2" onclick="job2()" style ="position: absolute; top:50px; left:10px">右移</button>
+        <button id="button3" onclick="job3()" style ="position: absolute; top:100px; left:10px">隨機移動</button>
+        <button id="button4" onclick="job4()" style ="position: absolute; top:150px; left:10px">彈跳</button>
+        <script>
+            function job1()
+            {
+                widthbt1 += 10
+                bt1.style = ` width:${widthbt1}` 
 
+            }
+            
+            let widthbt1 = 100
+            let bt1 = document.getElementById('button')
+            bt1.style.position = 'absolute'
+            function job2()
+            {
+                move += 10
+                bt2.style.left = move
+            }
+            
+            let move = 10
+            let bt2 = document.getElementById('button2')
+            bt2.style.position = 'absolute'
+            bt2.style.left = move
+            function job3()
+            {
+                const bt3X = Math.floor(Math.random() * (window.innerWidth - bt3.offsetWidth));
+                const bt3Y = Math.floor(Math.random() * (window.innerWidth - bt3.offsetWidth));
+                bt3.style.left = bt3X
+                bt3.style.top = bt3Y
+            }
+
+
+            let bt3 = document.getElementById('button3')
+            bt3.style.position = 'absolute'
+
+            let bt4X = 10
+            let bt4Y = 150
+            let speedX = 2
+            let speedY = 2
+            let timer
+            function job4()
+            {
+                if(timer)
+                {
+                    clearInterval(timer)
+                    timer = null
+                }
+                else
+                {
+                    timer = setInterval(jump, 20)
+                }
+
+
+            }
+           
+            function jump()
+            {
+                const maxWidth = window.innerWidth - bt4.offsetWidth
+                const maxHeight = window.innerHeight - bt4.offsetHeight
+
+                bt4X += speedX
+                bt4Y += speedY
+
+                if(bt4X <= 0 || bt4X >= maxWidth) 
+                {
+                    speedX = -speedX;
+                }
+                if(bt4Y <= 0 || bt4Y >= maxHeight) 
+                {
+                    speedY = -speedY;
+                }
+                bt4.style.left = bt4X
+                bt4.style.top = bt4Y
+            }
+
+            let bt4 = document.getElementById('button4')
+            bt4.style.position = 'absolute'
+        </script>
+    </body>
+
+</html>
