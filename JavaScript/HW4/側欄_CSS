@@ -1,1 +1,41 @@
-
+<html>
+<head>
+    
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .container div {
+            transition: width 2s ,font-size 2s;
+            
+        }
+        #div1 {
+            width: 50px;
+            background: rgb(0, 213, 255);
+            font-size: 1;
+        }
+        #div1:hover {
+            width: 150px;
+            font-size: 15;
+        }
+        #div2 {
+            width: 150px;
+            background: rgb(255, 213, 0);
+        }
+    </style>
+</head>
+<body>   
+    <div class="container">
+        <div id="div1">    
+            
+            <p>一些有趣的按鈕</p>
+            
+        </div> 
+        <div id="div2">
+            <p>很高興見到你！</p>
+            <p>我是林彥廷，目前就讀金門大學資訊工程系</p>
+        </div>
+    </div>
+</body>
+</html>
