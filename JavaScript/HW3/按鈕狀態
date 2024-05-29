@@ -8,7 +8,7 @@
             function job1()
             {
                 widthbt1 += 10
-                bt1.style = ` width:${widthbt1}` 
+                bt1.style = ` width:${widthbt1}`  
 
             }
             
