@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <style>
+        .form-group1
+        {
+            display: flex;
+            align-items: top;
+            margin-bottom: 15px;
+        }
+        .form-group1 textarea 
+        {
+            width: 250px;
+            height: 200px;
+            resize: none; /* 禁用调整大小 */
+        }
+
+        .form-group2
+        {
+            display: flex;
+            align-items: top;
+            margin-bottom: 15px;
+        }
+        .form-group2 textarea 
+        {
+            width: 250px;
+            height: 50px;
+            resize: none; 
+        }
+        </style>
+        <script>
+            function myFunction()
+            {
+                var str = document.getElementById('data').value;
+                hash(str).then((hex) => {document.getElementById('hash').value = hex});
+            }
+        </script>
+    </head>
+    <body>
+        <script src="sha.js"></script>
+        <h1>SHA256 Hash</h1>
+        <div class="form-group1">
+            <label>Data:</label>
+            <textarea id="data" onchange="myFunction()"></textarea>
+        </div>
+        
+        <div class="form-group2">
+            <label>Hash:</label>
+            <textarea id="hash" disabled></textarea>
+        </div>
+        <script>
+            // hash('foo').then((hex) => console.log(hex));
+            async function main() {
+                let str = document.getElementById('data').value;
+                let hex = await hash(str)
+                document.getElementById("hash").value = hex
+            }
+            
+            main()
+            document.getElementById('data').addEventListener('input', async function() {
+            let text = document.getElementById('data').value;
+            let hex = await hash(text);
+            document.getElementById('hash').value = hex;
+        });
+        </script>
+    </body>
+</html>
