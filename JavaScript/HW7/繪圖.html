@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <style>
+            body
+            {
+                
+                align-self: center;
+                text-align: center;
+            }
+            
+            .column
+            {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body >
+        <h1 >畫布</h1>
+        <div class="column">
+            <canvas id="Canvas1" width="200" height="200" style="border:1px solid #000000;"></canvas>
+            <canvas id="Canvas2" width="200" height="200" style="border:1px solid #000000;"></canvas>
+            <canvas id="Canvas3" width="200" height="200" style="border:1px solid #000000;"></canvas>
+            <canvas id="Canvas4" width="200" height="200" style="border:1px solid #000000;"></canvas>
+            
+        </div>
+        
+    </body>
+   
+
+    <script>
+        //愛心
+        let canvas1 = document.getElementById("Canvas1");
+        let ctx1 = canvas1.getContext('2d');
+        ctx1.beginPath();
+        ctx1.moveTo(100, 40);
+        ctx1.bezierCurveTo(100, 37, 95, 25, 75, 25);
+        ctx1.bezierCurveTo(60, 25, 60, 40, 60, 40);
+        ctx1.bezierCurveTo(60, 55, 80, 77, 100, 95);
+        ctx1.bezierCurveTo(120, 77, 140, 55, 140, 40);
+        ctx1.bezierCurveTo(140, 40, 140, 25, 125, 25);
+        ctx1.bezierCurveTo(105, 25, 100, 37, 100, 40);
+        ctx1.fillStyle = 'red';
+        ctx1.fill();
+        
+        //城堡
+        let canvas2 = document.getElementById("Canvas2");
+        let ctx2 = canvas2.getContext('2d');
+        ctx2.beginPath();
+        //城堡上源
+        ctx2.moveTo(20, 70);
+        ctx2.lineTo(20,20);
+        ctx2.lineTo(50,20);
+        ctx2.lineTo(50,50);
+        ctx2.lineTo(80,50);
+        ctx2.lineTo(80,20);
+        ctx2.lineTo(110,20);
+        ctx2.lineTo(110,50);
+        ctx2.lineTo(140,50);
+        ctx2.lineTo(140,20);
+        ctx2.lineTo(170,20);
+        ctx2.lineTo(170,70);
+        ctx2.moveTo(20, 70);
+        ctx2.lineTo(40,90);
+        ctx2.lineTo(150,90);
+        ctx2.lineTo(170,70);
+
+        //中部橢圓
+        ctx2.moveTo(40,90);
+        ctx2.quadraticCurveTo(20,100,40,110);
+        ctx2.lineTo(150,110);
+        ctx2.quadraticCurveTo(170,100,150,90);
+        //下半部
+        ctx2.moveTo(20,160);
+        ctx2.quadraticCurveTo(1,175,20,190);
+        ctx2.lineTo(170,190);
+        ctx2.quadraticCurveTo(190,175,170,160);
+        ctx2.lineTo(20,160);
+        //連接
+        ctx2.moveTo(50,110);
+        ctx2.lineTo(30,160);
+        ctx2.lineTo(160,160);
+        ctx2.lineTo(140,110);
+       
+        ctx2.fillStyle = '#bfbfbf';
+        ctx2.fill();
+
+        ctx2.stroke();
+
+        
+
+    //八芒星
+    const canvas3 = document.getElementById('Canvas3');
+    const ctx3 = canvas3.getContext('2d');
+    const centerX3 = 100;
+    const centerY3 = 100;
+    const radius = 100;
+    const angles = [0, Math.PI / 4, Math.PI / 2, 3 * Math.PI / 4, Math.PI, 5 * Math.PI / 4, 3 * Math.PI / 2, 7 * Math.PI / 4];
+    const points = []; 
+
+    // 計算頂點位置並存入陣列
+    for (let i = 0; i < angles.length; i++) 
+    {
+        points.push({ x: centerX3 + radius * Math.cos(angles[i]), y: centerY3 + radius * Math.sin(angles[i]) });
+    }
+
+    ctx3.beginPath();
+    ctx3.moveTo(points[0].x, points[0].y);
+    for (let i = 0; i < points.length; i+=2) 
+    {
+        ctx3.lineTo(points[i].x, points[i].y);
+    }
+
+    ctx3.closePath();
+    ctx3.moveTo(points[1].x, points[1].y);
+    for (let i = 1; i < points.length; i+=2) 
+    {
+        ctx3.lineTo(points[i].x, points[i].y);
+    }
+    ctx3.closePath();
+    ctx3.stroke();
+
+
+    //射手
+    const canvas4 = document.getElementById('Canvas4');
+    const ctx4 = canvas4.getContext('2d');
+    
+    ctx4.fillStyle = '#000000'; 
+    ctx4.strokeStyle = '#ffffff';
+    ctx4.fillRect(0, 0, canvas4.width, canvas4.height);
+    //生成星空
+
+    for (let i = 0; i < 100; i++) 
+    {
+        const x4 = Math.random() * 200;
+        const y4 = Math.random() * 200;
+        const r4 = Math.random() * 2;
+        ctx4.beginPath();
+        ctx4.arc(x4, y4, r4, 0, 2 * Math.PI);
+        ctx4.fillStyle = '#ffffffff';
+        ctx4.fill();
+        ctx4.stroke();
+    }
+    //射手座天文符號
+    ctx4.beginPath();
+    ctx4.lineWidth = 6;
+    ctx4.fillStyle = '#ffffffff';
+    ctx4.strokeStyle = '#808899';
+    ctx4.moveTo(40, 150);
+    ctx4.lineTo(160, 40);
+    ctx4.moveTo(90,156);
+    ctx4.lineTo(33,96);
+    ctx4.moveTo(100,55);
+    ctx4.lineTo(160,40);
+    ctx4.lineTo(150,100);
+    ctx4.stroke();
+
+
+    ctx4.stroke();
+    
+    </script>
+</html>
