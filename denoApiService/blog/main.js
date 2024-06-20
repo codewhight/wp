@@ -2,7 +2,7 @@ import {sqlFetch} from '../lib/sql.js' //引入spl.js
 
 export var R = {}
 let _id=0, _title=1, _body=2
-//使用chatgpt 監聽 hash
+//(使用chatgpt) 監聽 hash
 window.onhashchange = async function () {
   var r
   var tokens = window.location.hash.split('/')
@@ -73,7 +73,7 @@ R.show = function (post) {
     <p>${post[_body]}</p>
   `)
 }
-//這塊使用chatgpt 
+//(這塊程式碼使用chatgpt) 
 R.savePost = async function () {
   let title = document.querySelector('#title').value
   let body = document.querySelector('#body').value
