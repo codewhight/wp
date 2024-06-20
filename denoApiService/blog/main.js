@@ -1,8 +1,8 @@
-import {sqlFetch} from '../lib/sql.js'
+import {sqlFetch} from '../lib/sql.js' //引入spl.js
 
 export var R = {}
 let _id=0, _title=1, _body=2
-
+//使用chatgpt 監聽 hash
 window.onhashchange = async function () {
   var r
   var tokens = window.location.hash.split('/')
@@ -21,17 +21,17 @@ window.onhashchange = async function () {
       break
   }
 }
-
+// 初始化
 window.onload = async function () {
   await sqlFetch('blog', `CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, body TEXT)`)
   window.onhashchange()
 }
-
+//設置 title & content
 R.layout = function (title, content) {
-  document.querySelector('title').innerText = title
+  document.querySelector('title').innerText = title 
   document.querySelector('#content').innerHTML = content
 }
-
+//建立 list
 R.list = function (posts) {
   let list = []
   for (let post of posts) {
@@ -42,6 +42,7 @@ R.list = function (posts) {
     </li>
     `)
   }
+  // 新增裡面的元素
   let content = `
   <h1>Posts</h1>
   <p>You have <strong>${posts.length}</strong> posts!</p>
@@ -63,19 +64,19 @@ R.new = function () {
     <p><input id="savePost" type="button" value="Create"></p>
   </form>
   `)
-  document.querySelector('#savePost').onclick = ()=>R.savePost()
+  document.querySelector('#savePost').onclick = ()=>R.savePost()//建立保存按鈕事件
 }
-
+//呈現
 R.show = function (post) {
   return R.layout(post[_title], `
     <h1>${post[_title]}</h1>
     <p>${post[_body]}</p>
   `)
 }
-
+//這塊使用chatgpt 
 R.savePost = async function () {
   let title = document.querySelector('#title').value
   let body = document.querySelector('#body').value
-  await sqlFetch('blog', `INSERT INTO posts (title, body) VALUES ('${title}', '${body}')`)
-  window.location.hash = '#list'
+  await sqlFetch('blog', `INSERT INTO posts (title, body) VALUES ('${title}', '${body}')`)// 执行 SQL 插入操作，将新文章插入到数据库
+  window.location.hash = '#list' // 更新 URL hash，跳转到文章列表页面
 }
