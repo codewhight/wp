@@ -1,4 +1,57 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+      * 
+      {
+        text-align: center;
+        padding: 0;
+        margin: 10;
+      }
+      canvas 
+      {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>打磚頭遊戲</h1>
+    <p>Score: <span id="score">0</span> Level: <span id="level">1</span></p>
+    <canvas id="gamecanvas" width="500" height="350"></canvas>
+    <button id="rungame">start game</button>
+    <button id="newgame" >new game</button>
+    <button id="rules">game rules</button>
+   
+    
+    <script>
+        var intervalGame;
+        var flagBrick = false;
+        var scoreElement = document.getElementById('score');
+        var levelElement = document.getElementById('level');
+        var RulesButton = document.getElementById('rules');
+        var StartGameButton = document.getElementById('rungame');
+        var NewGameButton = document.getElementById('newgame');
+        var flagover = false;
+        var speed = 10;
+        var canvas = document.getElementById('gamecanvas');
+        var ctx = canvas.getContext("2d");
+        var level = parseInt(levelElement.textContent);
+        var temp = 0;
+        var score = parseInt(scoreElement.textContent);
 
+        //球的設定參數
+        var x = canvas.width/2;
+        var y = 200;
+        const ballRadius = 10;
+        var num = (Math.random() * 4) + 1;
+        if(num > 2 || num == 0)
+            num = 2 - num;
+        var dx = num;
+        var dy = 2;
+        
         //板子的參數
         var paddleHeight = 10;
         var paddleWidth = 170;
